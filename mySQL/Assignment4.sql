@@ -1,10 +1,9 @@
 DROP DATABASE IF EXISTS Employee; 							-- xoa csdl neu ton tai
 CREATE DATABASE IF NOT EXISTS Employee;						-- tao csdl moi
+USE Employee;												-- su dung csdl moi tao
 
-USE Employee;		
-										-- su dung csdl moi tao
-DROP TABLE IF EXISTS 		Department ;						-- xoa bang neu ton tai
-CREATE TABLE 				Department 
+DROP TABLE IF EXISTS 	Department ;						-- xoa bang neu ton tai
+CREATE TABLE 			Department 							-- tao bang
 (
 	DepartmentNumber 	TINYINT AUTO_INCREMENT PRIMARY KEY,
     DepartmentName		VARCHAR(30) NOT NULL
@@ -21,7 +20,7 @@ VALUES 					("Hanh Chinh"),
                         ("Su Kien"),
                         ("Bao Hiem");
 
-DROP TABLE IF EXISTS 		Employee_Table  ;						-- xoa bang neu ton tai
+DROP TABLE IF EXISTS 		Employee_Table  ;						
 CREATE TABLE 				Employee_Table 
 (
 	EmployeeNumber		TINYINT AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +28,7 @@ CREATE TABLE 				Employee_Table
     DepartmentNumber	TINYINT,
     FOREIGN KEY (DepartmentNumber) REFERENCES Department(DepartmentNumber)
 ); 
-INSERT INTO 	Employee_Table (EmployeeName,			DepartmentNumber)
+INSERT INTO 	Employee_Table  (EmployeeName,			DepartmentNumber)
 VALUES							("Nguyen Thi Ngoc",				1		),
 								("Nguyen Thi Van",				2		),
                                 ("Nguyen Thi Linh",				2		),
@@ -42,7 +41,7 @@ VALUES							("Nguyen Thi Ngoc",				1		),
                                 ("Nguyen Hong Ngoc",			2		);
 	
 
-DROP TABLE IF EXISTS 		Employee_Skill_Table  ;						-- xoa bang neu ton tai
+DROP TABLE IF EXISTS 		Employee_Skill_Table  ;						
 CREATE TABLE 				Employee_Skill_Table  
 (
 	EmployeeNumber		TINYINT,
@@ -51,32 +50,34 @@ CREATE TABLE 				Employee_Skill_Table
     FOREIGN KEY (EmployeeNumber) REFERENCES Employee_Table(EmployeeNumber)
 );
 INSERT INTO 	Employee_Skill_Table (EmployeeNumber,	SkillCode,	DateRegistered)
-VALUES								 (		1		,	"SK01"	 ,	"JAVA"),
+VALUES								 (		5		,	"SK04"	 ,	".NET")
+									 (		1		,	"SK01"	 ,	"JAVA"),
 									 (		2		,	"SK02"	 ,	"PHP"),
                                      (		3		,	"SK03"	 ,	"PYTHON"),
-                                     (		1		,	"SK01"	 ,	"PHP"),
-									 (		2		,	"SK02"	 ,	"JAVA"),
+                                     (		3		,	"SK01"	 ,	"PHP"),
+									 (		5		,	"SK02"	 ,	"JAVA"),
                                      (		1		,	"SK01"	 ,	"PYTHON"),
 									 (		2		,	"SK02"	 ,	"C"),
                                      (		4		,	"SK04"	 ,	"C");
+                                    
 	-- CAU 3
-SELECT		EmployeeName
+SELECT		E.EmployeeNumber,EmployeeName, DateRegistered AS Skill
 FROM		Employee_Table AS E 
 JOIN 		Employee_Skill_Table AS S 	ON		E.EmployeeNumber = S.EmployeeNumber 
 WHERE 		DateRegistered = "JAVA";
 -- CAU 4
-SELECT 		DepartmentName
+SELECT 		D.DepartmentNumber,DepartmentName
 FROM		Department AS D
 JOIN		Employee_Table AS E ON D.DepartmentNumber = E.DepartmentNumber
 GROUP BY(D.DepartmentNumber)
 HAVING 		COUNT(E.DepartmentNumber) > 3;
 -- CAU 5
-SELECT		DepartmentName, EmployeeName 
+SELECT		D.DepartmentNumber,DepartmentName, JSON_ARRAYAGG(EmployeeName) 
 FROM		Department AS D
 JOIN		Employee_Table AS E	ON D.DepartmentNumber = E.DepartmentNumber
 GROUP BY(D.DepartmentNumber);
 -- CAU 6
-SELECT		EmployeeName,JSON_ARRAYAGG(DateRegistered) AS Skill 
+SELECT		E.EmployeeNumber,EmployeeName,JSON_ARRAYAGG(DateRegistered) AS Skill 
 FROM		Employee_Table  AS E
 JOIN		Employee_Skill_Table AS S ON E.EmployeeNumber = S.EmployeeNumber
 GROUP BY(S.SkillCode)
