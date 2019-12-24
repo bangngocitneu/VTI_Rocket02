@@ -1,9 +1,13 @@
-DROP DATABASE IF EXISTS Employee; 							-- xoa csdl neu ton tai
-CREATE DATABASE IF NOT EXISTS Employee;						-- tao csdl moi
-USE Employee;												-- su dung csdl moi tao
-
-DROP TABLE IF EXISTS 	Department ;						-- xoa bang neu ton tai
-CREATE TABLE 			Department 							-- tao bang
+-- xoa csdl neu ton tai
+DROP DATABASE IF EXISTS Employee; 	
+-- tao csdl moi		
+CREATE DATABASE IF NOT EXISTS Employee;		
+-- su dung csdl moi tao
+USE Employee;												
+-- xoa bang neu ton tai
+DROP TABLE IF EXISTS 	Department ;
+-- tao bang					
+CREATE TABLE 			Department 							
 (
 	DepartmentNumber 	TINYINT AUTO_INCREMENT PRIMARY KEY,
     DepartmentName		VARCHAR(30) NOT NULL
@@ -20,8 +24,8 @@ VALUES 					("Hanh Chinh"),
                         ("Su Kien"),
                         ("Bao Hiem");
 
-DROP TABLE IF EXISTS 		Employee_Table  ;						
-CREATE TABLE 				Employee_Table 
+DROP TABLE IF EXISTS 	Employee_Table  ;						
+CREATE TABLE 			Employee_Table 
 (
 	EmployeeNumber		TINYINT AUTO_INCREMENT PRIMARY KEY,
     EmployeeName		VARCHAR(30) NOT NULL,
@@ -50,7 +54,7 @@ CREATE TABLE 				Employee_Skill_Table
     FOREIGN KEY (EmployeeNumber) REFERENCES Employee_Table(EmployeeNumber)
 );
 INSERT INTO 	Employee_Skill_Table (EmployeeNumber,	SkillCode,	DateRegistered)
-VALUES								 (		5		,	"SK04"	 ,	".NET")
+VALUES								 (		5		,	"SK04"	 ,	".NET"),
 									 (		1		,	"SK01"	 ,	"JAVA"),
 									 (		2		,	"SK02"	 ,	"PHP"),
                                      (		3		,	"SK03"	 ,	"PYTHON"),
@@ -72,13 +76,15 @@ JOIN		Employee_Table AS E ON D.DepartmentNumber = E.DepartmentNumber
 GROUP BY(D.DepartmentNumber)
 HAVING 		COUNT(E.DepartmentNumber) > 3;
 -- CAU 5
-SELECT		D.DepartmentNumber,DepartmentName, JSON_ARRAYAGG(EmployeeName) 
+SELECT		D.DepartmentNumber,DepartmentName, GROUP_CONCAT(EmployeeName) 
 FROM		Department AS D
 JOIN		Employee_Table AS E	ON D.DepartmentNumber = E.DepartmentNumber
 GROUP BY(D.DepartmentNumber);
 -- CAU 6
-SELECT		E.EmployeeNumber,EmployeeName,JSON_ARRAYAGG(DateRegistered) AS Skill 
+SELECT		E.EmployeeNumber,EmployeeName,GROUP_CONCAT(DateRegistered) AS Skill 
 FROM		Employee_Table  AS E
 JOIN		Employee_Skill_Table AS S ON E.EmployeeNumber = S.EmployeeNumber
 GROUP BY(S.SkillCode)
 HAVING		COUNT(S.SkillCode) > 1;
+
+
