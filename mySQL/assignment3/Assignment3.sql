@@ -34,6 +34,7 @@ VALUES
 					("Nguyen Thuy Linh",  '1997-12-15',	"Female",	9,		10,		"RK01",	 		 15,			"linh@gmai.com"),
 					("Nguyen Quoc Dat",   '1998-12-13',	"Male",		9,		8,		"RK02",			 17,			"dat@gmai.com"),
 					("Nguyen Tuan Vu",    '1999-04-12',	"Male",		6,		8,		"RK01",			 18,		 	"tuanvu@gmai.com");
+
 -- E2
 -- lay ra tat ca thuc tap sinh vuot qua bai test dau vao nhom theo thang sinh khac nhau
 SELECT 		MONTH(Birth_Date), GROUP_CONCAT(Full_Name)
@@ -64,13 +65,14 @@ UPDATE  Trainee
 SET 
 		Training_Class = "RK02"
 WHERE 	TraineeID = 5;
+SELECT	*
+FROM	Trainee;          
             
             
             
             
             
-            
-            
+   -- ( bt nay o assignment 2)         
 DROP TABLE IF EXISTS 		Exercise2;
 CREATE TABLE 		 		Exercise2
 (
