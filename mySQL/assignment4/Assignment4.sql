@@ -43,7 +43,7 @@ VALUES							("Nguyen Thi Ngoc",				1		),
                                 ("Nguyen Thuy Linh",			4		),
                                 ("Nguyen Thuy Ngoc",			2		),
                                 ("Nguyen Hong Ngoc",			2		);
-	
+
 
 DROP TABLE IF EXISTS 		Employee_Skill_Table  ;						
 CREATE TABLE 				Employee_Skill_Table  

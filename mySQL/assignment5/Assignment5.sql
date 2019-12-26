@@ -42,5 +42,14 @@ WHERE	CT.Name IN ( SELECT CT.Name
 					 FROM	countryregion AS CT
                      WHERE	Name = "Canada" OR Name = "Germany");
 -- CAU 3
+SELECT	SD.SalesOrderID, SD.OrderDate, SS.salespersonID	AS BusinessEntityID, SS.Bonus, SS.SalesYTD 
+FROM	salesorderheader 	AS SD
+JOIN	salesperson AS SS	ON	SS.salespersonID = SD.salespersonID;
+	
+-- CAU 4
+SELECT	SD.SalesOrderID, SD.OrderDate, Title , SS.Bonus, SS.SalesYTD 
+FROM	salesorderheader 	AS SD
+JOIN	salesperson AS SS	ON	SS.salespersonID = SD.salespersonID
+JOIN	employee	AS E 	ON	SS.salespersonID = E.EmployeeID;
 
 
