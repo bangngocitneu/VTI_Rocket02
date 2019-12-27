@@ -14,10 +14,10 @@ CREATE TABLE 				Trainee
 		Full_Name 			VARCHAR(30) NOT NULL,
 		Birth_Date 			DATE		NOT NULL,
 		Gender 				ENUM("Male","Female","Unknown"),
-		ET_IQ 				TINYINT 	NOT NULL,
-		ET_Gmath			TINYINT 	NOT NULL,
-		Training_Class		CHAR(10) 	NOT NULL,
-		ET_English			TINYINT 	NOT NULL
+		ET_IQ 				TINYINT 	NOT NULL	CHECK(ET_IQ > 0 		AND		ET_IQ < 20),
+		ET_Gmath			TINYINT 	NOT NULL	CHECK(ET_Gmath > 0 		AND		ET_Gmath < 20),
+		Training_Class		CHAR(10) 	NOT NULL,	
+		ET_English			TINYINT 	NOT NULL	CHECK(ET_English > 0 	AND		ET_English < 50)
 );		
 ALTER TABLE TRAINEE ADD VTI_Account CHAR(20) NOT NULL UNIQUE;
 
