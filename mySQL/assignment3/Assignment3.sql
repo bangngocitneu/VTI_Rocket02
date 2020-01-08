@@ -91,3 +91,10 @@ CREATE TABLE 		 		Exercise3
 		Gender				BIT NULL,
 		IsDeletedFlag		BIT 
 );
+-- assignment 7
+CREATE VIEW	Thuctapsinh_ET
+AS
+SELECT	TraineeID,Full_Name,Birth_Date,Gender,ET_IQ, ET_Gmath, Training_Class, LENGTH(Full_Name)
+FROM	Trainee
+WHERE	ET_IQ + ET_Gmath>=20 AND ET_IQ>=8 AND ET_Gmath>=8 AND ET_English>=18;
+SELECT	* FROM	Thuctapsinh_ET;
