@@ -2,33 +2,17 @@ package Assignment5;
 
 public class QuickSort extends SequenceNumber implements Sort {
 
-	public QuickSort(int[] arr) {
-		super(arr);
-	}
-
-	static int left, right;
-	static int i = left, j = right;
-	public static void main(String[] args) {
-		input();
-		print();
-		left = 0;
-		right = arr.length - 1;
-		qickSort(arr, left, right);
-		System.out.println("Sau khi sắp xếp (Quick Sort)");
-		print();
-	}
-
-	public static void qickSort(int[] arr, int left, int right) {
+	public void quickSort(int[] arr, int left, int right) {
 		if (arr == null || arr.length == 0) {
 			return;
 		}
 
-		int middle = left + (right = left) / 2;
+		int middle = left + (right - left) / 2;
 		int pivot = arr[middle];
 		if (left >= right) {
 			return;
 		}
-		
+		int i = left, j = right;
 		while (i <= j) {
 			while (arr[i] < pivot) {
 				i++;
@@ -37,38 +21,30 @@ public class QuickSort extends SequenceNumber implements Sort {
 				j--;
 			}
 			if (i <= j) {
-				SelectionSort.hoan_vi(arr, i, j);
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 				i++;
 				j--;
 
 			}
 		}
+
 		if (left > j) {
-			qickSort(arr,left,j);
+
+			quickSort(arr, left, j);
 		}
 
-		if (right < i){
-			qickSort(arr,i,right);
+		if (right < i) {
+			quickSort(arr, i, right);
 		}
 	}
 
 	@Override
-	public void Sort() {
-		// TODO Auto-generated method stub
-		
+	public void sort() {
+		int left = 0;
+		int right = arr.length - 1;
+		quickSort(arr, left, right);
+
 	}
 }
-
-/*	@Override
-	public static  void Sort() {
-
-		if (left > j) {
-			qickSort(arr,left,j);
-		}
-
-		if (right < i){
-			qickSort(arr,i,right);
-		}
-	}
-
-}*/

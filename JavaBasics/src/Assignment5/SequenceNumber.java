@@ -2,42 +2,29 @@ package Assignment5;
 
 import java.util.Scanner;
 
-public class SequenceNumber {
-
-	// Câu a
-	static int n;
-	static int[] arr;
-
-	@SuppressWarnings("static-access")
-	public SequenceNumber(int[] arr) {
-		super();
-		this.arr = arr;
-
-	}
+public abstract class SequenceNumber implements Sort {
+ 
+	protected int n;
+	protected int[] arr;
 
 	@SuppressWarnings("resource")
-	public static void input() {
+	public void input() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Nhập vào số phần tử của dãy:\n");
-		n = new Scanner(System.in).nextInt();
+		n = scanner.nextInt();
 		arr = new int[n];
 		for (int i = 0; i < n; i++) {
 			System.out.printf("a[%d] =  ", i);
-			arr[i] = new Scanner(System.in).nextInt();
+			arr[i] = scanner.nextInt();
 		}
 	}
 
-	public static void print() {
+	public void print() {
 		System.out.println("Mảng là: ");
 		for (int mang : arr) {
 			System.out.print(mang + " ");
 		}
-		 System.out.println();
+		System.out.println();
 	}
 
-	public static void main(String[] args) {
-
-		System.out.println(" câu a");
-		input();
-		print();
-	}
 }

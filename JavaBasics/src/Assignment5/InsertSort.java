@@ -2,22 +2,11 @@ package Assignment5;
 
 
 
-public class InsertSort extends SequenceNumber implements Sort{
+public class InsertSort extends SequenceNumber{
 
-	public InsertSort(int[] arr) {
-		super(arr);
-	}
-
-	public static void main(String[] args) {
-		input();
-		print(); 
-		Sort();
-		System.out.println("Sau khi sắp xếp (Insertion Sort)");
-		print();
-	}
 
 	@Override
-	public static void Sort() {
+	public void sort() {
 		for(int i=1; i<n; i++) {
 			int x = arr[i];
 			int y = i;
@@ -26,8 +15,7 @@ public class InsertSort extends SequenceNumber implements Sort{
 				y--;
 			}
 			arr[y]=x;
-		}
-		
+		}		
 	}
 
 }

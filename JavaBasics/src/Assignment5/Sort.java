@@ -2,7 +2,7 @@ package Assignment5;
 
 
 
-public interface Sort {
+public abstract interface Sort {
 
-	public void Sort();
+	public void sort();
 }
