@@ -9,7 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import baitap.Student;
-
+/**
+ * 
+ * This class is . 
+ * 
+ * @Description: .
+ * @author: NNgoc
+ * @create_date: Mar 26, 2020
+ * @version: 1.0
+ * @modifer: NNgoc
+ * @modifer_date: Mar 26, 2020
+ */
 public class ConnMySQL {
 
 	// Kết nối vào MySQL.
