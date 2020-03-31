@@ -1,0 +1,28 @@
+package com.vti.finalexam.entity;
+
+public class Employee {
+	private String ProjectName;
+	private String ProSkill;
+	
+	
+	
+	public String getProjectName() {
+		return ProjectName;
+	}
+	public void setProjectName(String projectName) {
+		ProjectName = projectName;
+	}
+	public String getProSkill() {
+		return ProSkill;
+	}
+	public void setProSkill(String proSkill) {
+		ProSkill = proSkill;
+	}
+	public Employee(String projectName, String proSkill) {
+		super();
+		this.ProjectName = projectName;
+		ProSkill = proSkill;
+	}
+	
+	
+}

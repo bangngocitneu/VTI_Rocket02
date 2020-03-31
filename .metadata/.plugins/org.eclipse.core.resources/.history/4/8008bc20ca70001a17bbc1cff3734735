@@ -1,0 +1,6 @@
+package backend.businesslayer;
+
+public interface IUserService {
+
+	//
+}

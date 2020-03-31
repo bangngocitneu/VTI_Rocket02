@@ -1,0 +1,5 @@
+package com.vti.finalexam.entity;
+
+public enum ProjectNameEnum {
+	TESTING_SYSTEM, CRM, TIMESHEET;
+}

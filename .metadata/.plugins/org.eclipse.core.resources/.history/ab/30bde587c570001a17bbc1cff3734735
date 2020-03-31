@@ -1,0 +1,47 @@
+package entity;
+
+/**
+ * 
+ * This class is Manager
+ * 
+ * @Description: .
+ * @author: NNgoc
+ * @create_date: Mar 27, 2020
+ * @version: 1.0
+ * @modifer: NNgoc
+ * @modifer_date: Mar 27, 2020
+ */
+public class Manager extends User {
+	private int ExpInYear;
+
+	public int getExpInYear() {
+		return ExpInYear;
+	}
+
+	public void setExpInYear(int expInYear) {
+		ExpInYear = expInYear;
+	}
+
+	/**
+	 * 
+	 * Constructor for class Manager.
+	 * 
+	 * @Description: .
+	 * @author: NNgoc
+	 * @create_date: Mar 27, 2020
+	 * @version: 1.0
+	 * @modifer: NNgoc
+	 * @modifer_date: Mar 27, 2020
+	 * @param firstName
+	 * @param lastName
+	 * @param phone
+	 * @param email
+	 * @param expInYear
+	 */
+	public Manager(String firstName, String lastName, int phone, String email, int expInYear) {
+		super(firstName, lastName, phone, email);
+		ExpInYear = expInYear;
+	}
+	
+
+}
