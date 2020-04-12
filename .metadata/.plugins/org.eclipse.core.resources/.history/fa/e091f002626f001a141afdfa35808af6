@@ -1,8 +1,0 @@
-package snippet;
-
-public class Snippet {
-	com.vti.template.utils
-	com.vti.template.utils.file
-	com.vti.template.utils.jdbc
-}
-
